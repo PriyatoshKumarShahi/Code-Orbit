@@ -1,6 +1,6 @@
-# Veritas-AI
+# SachAI
 
-Veritas-AI is a multilingual fake-news detector built with **React**, **FastAPI**, **Qdrant**, and **Gemini**.
+SachAI is a multilingual fake-news detector built with **React**, **FastAPI**, **Qdrant**, and **Gemini**.
 It focuses on the kind of misinformation that spreads fast on WhatsApp, reels, and forwarded articles.
 
 ## What it does
@@ -29,7 +29,7 @@ It focuses on the kind of misinformation that spreads fast on WhatsApp, reels, a
 ## Project structure
 
 ```text
-veritas-ai/
+sachAI/
 ├── backend/
 │   ├── app/
 │   │   ├── api/
@@ -98,12 +98,11 @@ On macOS/Linux:
 ```bash
 cp .env.example .env
 ```
-
 ### Required environment variables
 
 ```env
 QDRANT_URL=http://localhost:6333
-QDRANT_COLLECTION=veritas_claims
+QDRANT_COLLECTION=sach_claims
 GEMINI_API_KEY=your_gemini_key
 GEMINI_MODEL=gemini-2.5-flash
 GOOGLE_SEARCH_API_KEY=optional_for_live_search

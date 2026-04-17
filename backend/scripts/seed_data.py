@@ -60,4 +60,4 @@ SEED_RECORDS = [
 
 if __name__ == "__main__":
     upsert_claims(SEED_RECORDS)
-    print("Seeded Veritas-AI demo claims into Qdrant.")
+    print("Seeded SachAI demo claims into Qdrant.")

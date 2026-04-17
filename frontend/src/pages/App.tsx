@@ -12,7 +12,7 @@ export default function App() {
         <div className="brand">
           <div className="brand-icon"><ShieldEllipsis size={20} /></div>
           <div>
-            <strong>Veritas-AI</strong>
+            <strong>SachAI</strong>
             <span>Multilingual Fake News Detector</span>
           </div>
         </div>

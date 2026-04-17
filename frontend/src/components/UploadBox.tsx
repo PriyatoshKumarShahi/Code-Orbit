@@ -22,7 +22,7 @@ export default function UploadBox({ loading, onSubmitText, onSubmitImage }: Prop
       <div className="hero-copy">
         <h1>Paste a viral forward. Get the truth in seconds.</h1>
         <p>
-          Veritas-AI checks suspicious news against historical fake-news patterns, scam templates, and multilingual claim vectors.
+          SachAI checks suspicious news against historical fake-news patterns, scam templates, and multilingual claim vectors.
         </p>
       </div>
 

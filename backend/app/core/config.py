@@ -6,14 +6,14 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    app_name: str = "Veritas-AI"
+    app_name: str = "SachAI"
     app_env: str = "development"
     api_v1_prefix: str = "/api/v1"
     backend_cors_origins: List[str] | str = ["http://localhost:5173"]
 
     qdrant_url: str = "http://localhost:6333"
     qdrant_api_key: str | None = None
-    qdrant_collection: str = "veritas_claims"
+    qdrant_collection: str = "sach_claims"
 
     gemini_api_key: str | None = None
     gemini_model: str = "gemini-2.5-flash"

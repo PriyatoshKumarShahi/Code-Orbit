@@ -11,7 +11,7 @@ router = APIRouter()
 
 @router.get("/health")
 def health_check():
-    return {"status": "ok", "service": "Veritas-AI"}
+    return {"status": "ok", "service": "SachAI"}
 
 
 @router.post("/verify", response_model=VerifyResponse)

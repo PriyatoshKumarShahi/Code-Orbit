@@ -1,4 +1,4 @@
-# Veritas-AI Architecture
+# SachAI Architecture
 
 ## High-level flow
 

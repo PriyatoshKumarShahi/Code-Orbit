@@ -1,6 +1,6 @@
 # 90-Second Demo Script
 
-"Good morning. We built Veritas-AI, a multilingual fake-news detector designed for the kind of misinformation real people receive every day — especially WhatsApp forwards, scam links, and viral claims in Hinglish, Hindi, Tamil, and English.
+"Good morning. We built SachAI, a multilingual fake-news detector designed for the kind of misinformation real people receive every day — especially WhatsApp forwards, scam links, and viral claims in Hinglish, Hindi, Tamil, and English.
 
 Let me show you a very common example.
 
@@ -12,4 +12,4 @@ Now instead of only saying 'fake', our system shows the credibility score, fake-
 
 Finally, Gemini explains the verdict in simple language: 'Dhyan dein, yeh phishing scam lag raha hai. OTP mat dijiye. Official telecom app ya website se verify kariye.'
 
-So Veritas-AI is not just a classifier. It is a fact-check assistant that helps users understand why a message is suspicious, what the real truth is, and whether they should stop forwarding it."
+So SachAI is not just a classifier. It is a fact-check assistant that helps users understand why a message is suspicious, what the real truth is, and whether they should stop forwarding it."

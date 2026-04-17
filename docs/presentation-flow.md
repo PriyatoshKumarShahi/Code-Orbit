@@ -1,7 +1,7 @@
 # Presentation Flow for Mentors and Judges
 
 ## 1. Hook (10-15 sec)
-"Every day, people forward messages without checking if they are true. In India, many of these are in Hinglish, regional languages, or recycled media. Veritas-AI helps any user check a suspicious message in seconds."
+"Every day, people forward messages without checking if they are true. In India, many of these are in Hinglish, regional languages, or recycled media. SachAI helps any user check a suspicious message in seconds."
 
 ## 2. The problem (20 sec)
 - Fake news spreads faster than official clarification.
@@ -10,7 +10,7 @@
 - The same fake story keeps returning in new versions.
 
 ## 3. Our solution (20 sec)
-"Veritas-AI is a multilingual fake-news detector. A user pastes a message or uploads an image. We compare it against known misinformation patterns in Qdrant, then generate a simple explanation in everyday language."
+"SachAI is a multilingual fake-news detector. A user pastes a message or uploads an image. We compare it against known misinformation patterns in Qdrant, then generate a simple explanation in everyday language."
 
 ## 4. What makes us different (30 sec)
 - Hinglish-aware retrieval
