@@ -5,7 +5,7 @@ It focuses on the kind of misinformation that spreads fast on WhatsApp, reels, a
 
 ## What it does
 
-- Paste suspicious text or a WhatsApp forward.
+- Paste suspicious text or a WhatsApp forward
 - Upload an image for image-first verification flow.
 - Search Qdrant for semantically similar misinformation patterns.
 - Show a **Misinformation Family Tree** when a known fake keeps returning in new forms.
