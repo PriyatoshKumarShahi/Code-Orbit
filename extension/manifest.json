@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Parakh: The Truth Filter",
+  "version": "1.0",
+  "description": "Fact-check any forward or news article instantly. Powered by SachAI.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "notifications"
+  ],
+  "host_permissions": [
+    "https://web.whatsapp.com/*",
+    "http://localhost:8000/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "Open Parakh",
+    "default_popup": "popup.html"
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "verdict": "Suspicious",
+  "short_verdict": "Suspicious",
+  "explanation": "Dhyan dein! Yeh message suspicious lag raha hai. Hamare database me iska similarity score 0.92 mila aur 4 purane versions bhi mile. Link ya forward ko bina verify kiye share mat kariye.",
+  "language_mode": "hinglish",
+  "credibility_score": 26.9,
+  "fake_probability": 0.731,
+  "confidence": 0.919,
+  "visual_meter": {
+    "fake_probability": 0.731,
+    "credibility_score": 26.9,
+    "verdict_color": "red",
+    "trust_band": "Low"
+  },
+  "family_tree": [
+    {
+      "id": "ft-2021-a",
+      "title": "Lockdown Free Recharge Scam",
+      "label": "scam",
+      "year": 2021,
+      "variation_note": "Used OTP bait",
+      "similarity": 0.92
+    },
+    {
+      "id": "ft-2022-a",
+      "title": "Festival Recharge Offer Scam",
+      "label": "scam",
+      "year": 2022,
+      "variation_note": "Added wallet cashback claim",
+      "similarity": 0.88
+    },
+    {
+      "id": "ft-2023-a",
+      "title": "Jio Free 84 Days Fraud",
+      "label": "scam",
+      "year": 2023,
+      "variation_note": "Used shortened URL",
+      "similarity": 0.86
+    },
+    {
+      "id": "ft-2024-a",
+      "title": "Election Offer Recharge Scam",
+      "label": "scam",
+      "year": 2024,
+      "variation_note": "Targeted WhatsApp groups",
+      "similarity": 0.83
+    }
+  ],
+  "similar_matches": [
+    {
+      "id": "cfce8fab-5e8b-5f97-ac81-6eb2386b4518",
+      "title": "Free Recharge Scam Link",
+      "label": "scam",
+      "score": 0.919,
+      "source": "Cyber safety archive",
+      "published_at": "2021-05-12",
+      "url": "https://example.org/free-recharge-scam",
+      "snippet": "A phishing campaign promising free recharge in exchange for OTP."
+    }
+  ],
+  "evidence": {
+    "qdrant_score": 0.919,
+    "matched_label_distribution": {
+      "scam": 1
+    },
+    "matched_claim_ids": [
+      "cfce8fab-5e8b-5f97-ac81-6eb2386b4518"
+    ],
+    "live_search_used": false,
+    "live_search_summary": null
+  },
+  "normalized_input": "Free recharge link sab users ko free data de raha hai",
+  "extracted_text_from_image": null,
+  "raw_llm_summary": "Dhyan dein! Yeh message suspicious lag raha hai. Hamare database me iska similarity score 0.92 mila aur 4 purane versions bhi mile. Link ya forward ko bina verify kiye share mat kariye.",
+  "consequences": "Log apna paisa kho sakte hain ya galat jankari se pareshan ho sakte hain.",
+  "social_impact": "Aisi afwaahon se samaj me darr aur asuraksha badhti hai.",
+  "community_flags": 15,
+  "debug": {
+    "heuristics": {
+      "caps_ratio": 0.023,
+      "exclamations": 0,
+      "has_free": 1,
+      "has_urgent": 0,
+      "url_count": 0
+    },
+    "best_label": "scam",
+    "top_k": 1
+  }
+}

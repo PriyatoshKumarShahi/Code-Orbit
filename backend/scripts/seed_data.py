@@ -1,6 +1,9 @@
 from app.db.qdrant_client import upsert_claims
 
 SEED_RECORDS = [
+    # ─────────────────────────────────────────────
+    # ENGLISH – SCAM / MISLEADING / REAL
+    # ─────────────────────────────────────────────
     {
         "id": "claim-001",
         "title": "Free Recharge Scam Link",
@@ -14,8 +17,8 @@ SEED_RECORDS = [
             {"id": "ft-2021-a", "title": "Lockdown Free Recharge Scam", "label": "scam", "year": 2021, "variation_note": "Used OTP bait", "similarity": 0.92},
             {"id": "ft-2022-a", "title": "Festival Recharge Offer Scam", "label": "scam", "year": 2022, "variation_note": "Added wallet cashback claim", "similarity": 0.88},
             {"id": "ft-2023-a", "title": "Jio Free 84 Days Fraud", "label": "scam", "year": 2023, "variation_note": "Used shortened URL", "similarity": 0.86},
-            {"id": "ft-2024-a", "title": "Election Offer Recharge Scam", "label": "scam", "year": 2024, "variation_note": "Targeted WhatsApp groups", "similarity": 0.83}
-        ]
+            {"id": "ft-2024-a", "title": "Election Offer Recharge Scam", "label": "scam", "year": 2024, "variation_note": "Targeted WhatsApp groups", "similarity": 0.83},
+        ],
     },
     {
         "id": "claim-002",
@@ -27,9 +30,9 @@ SEED_RECORDS = [
         "url": "https://example.org/riot-video-old",
         "snippet": "Archived media mismatch between claim date and actual video origin.",
         "family_tree": [
-            {"id": "ft-2019-b", "title": "Original 2019 clip", "label": "real-context-mismatch", "year": 2019, "variation_note": "Original upload", "similarity": 0.9},
-            {"id": "ft-2024-b", "title": "Reposted with fake caption", "label": "misleading", "year": 2024, "variation_note": "Caption changed to create panic", "similarity": 0.84}
-        ]
+            {"id": "ft-2019-b", "title": "Original 2019 clip", "label": "real-context-mismatch", "year": 2019, "variation_note": "Original upload", "similarity": 0.90},
+            {"id": "ft-2024-b", "title": "Reposted with fake caption", "label": "misleading", "year": 2024, "variation_note": "Caption changed to create panic", "similarity": 0.84},
+        ],
     },
     {
         "id": "claim-003",
@@ -40,8 +43,256 @@ SEED_RECORDS = [
         "published_at": "2025-04-18",
         "url": "https://example.org/scholarship-real",
         "snippet": "Legitimate announcement from an official domain.",
-        "family_tree": []
+        "family_tree": [],
     },
+    {
+        "id": "claim-005",
+        "title": "WhatsApp Gold Virus Hoax",
+        "text": "Do NOT download 'WhatsApp Gold'. It is a virus that will destroy your phone within 48 hours. Forward this warning to everyone.",
+        "label": "fake",
+        "source": "Hoax-Slayer archive",
+        "published_at": "2020-03-10",
+        "url": "https://example.org/whatsapp-gold-hoax",
+        "snippet": "Long-running chain-letter hoax about a fake WhatsApp version.",
+        "family_tree": [
+            {"id": "ft-2016-e", "title": "WhatsApp Gold first wave", "label": "fake", "year": 2016, "variation_note": "Original chain letter", "similarity": 0.95},
+            {"id": "ft-2019-e", "title": "WhatsApp Pink Variant", "label": "fake", "year": 2019, "variation_note": "Renamed to Pink", "similarity": 0.89},
+            {"id": "ft-2021-e", "title": "WhatsApp Plus Malware Rumour", "label": "fake", "year": 2021, "variation_note": "Claimed data theft", "similarity": 0.85},
+        ],
+    },
+    {
+        "id": "claim-006",
+        "title": "Drinking Hot Water Cures COVID-19",
+        "text": "Doctors confirm that drinking hot water every 15 minutes kills the coronavirus before it can reach your lungs.",
+        "label": "fake",
+        "source": "WHO misinformation tracker",
+        "published_at": "2020-04-02",
+        "url": "https://example.org/hot-water-covid",
+        "snippet": "Medically debunked claim circulated widely during pandemic.",
+        "family_tree": [
+            {"id": "ft-2020-f1", "title": "Hot water kills virus – version 1", "label": "fake", "year": 2020, "variation_note": "WhatsApp forward", "similarity": 0.93},
+            {"id": "ft-2020-f2", "title": "Gargling salt water variant", "label": "fake", "year": 2020, "variation_note": "Changed liquid to salt water", "similarity": 0.80},
+        ],
+    },
+    {
+        "id": "claim-007",
+        "title": "RBI Cashback Scheme – Phishing",
+        "text": "RBI has launched a special cashback scheme. Register now with your Aadhaar and bank account to receive ₹5,000 directly.",
+        "label": "scam",
+        "source": "RBI cybersecurity cell",
+        "published_at": "2023-07-14",
+        "url": "https://example.org/rbi-cashback-scam",
+        "snippet": "Phishing page mimicking RBI to harvest Aadhaar and banking credentials.",
+        "family_tree": [
+            {"id": "ft-2022-g", "title": "PM Relief Fund Cashback Scam", "label": "scam", "year": 2022, "variation_note": "Used PM branding", "similarity": 0.88},
+            {"id": "ft-2023-g", "title": "RBI 75th Anniversary Cashback", "label": "scam", "year": 2023, "variation_note": "Tied to anniversary milestone", "similarity": 0.91},
+        ],
+    },
+    {
+        "id": "claim-008",
+        "title": "ISRO Successfully Launches Chandrayaan-3",
+        "text": "ISRO's Chandrayaan-3 mission successfully soft-landed on the Moon's south pole on 23 August 2023, making India the first country to achieve this feat.",
+        "label": "real",
+        "source": "ISRO official press release",
+        "published_at": "2023-08-23",
+        "url": "https://example.org/chandrayaan3-real",
+        "snippet": "Verified milestone from ISRO's official communication.",
+        "family_tree": [],
+    },
+    {
+        "id": "claim-009",
+        "title": "Fake KBC Lottery Winner Message",
+        "text": "Congratulations! You have won ₹25 lakh in KBC Season 15 lottery. Call this number to claim your prize before 48 hours.",
+        "label": "scam",
+        "source": "KBC fraud alert archive",
+        "published_at": "2024-10-05",
+        "url": "https://example.org/kbc-lottery-scam",
+        "snippet": "Impersonating Kaun Banega Crorepati to extract money/personal data.",
+        "family_tree": [
+            {"id": "ft-2019-h", "title": "KBC Season 11 Lottery Scam", "label": "scam", "year": 2019, "variation_note": "Used SMS", "similarity": 0.92},
+            {"id": "ft-2022-h", "title": "KBC WhatsApp Lottery 2022", "label": "scam", "year": 2022, "variation_note": "WhatsApp PDF attachment", "similarity": 0.89},
+            {"id": "ft-2024-h", "title": "KBC Season 15 Scam Call", "label": "scam", "year": 2024, "variation_note": "Voice call spoofing", "similarity": 0.86},
+        ],
+    },
+    {
+        "id": "claim-010",
+        "title": "Supreme Court Notice on Fake News – Genuine Alert",
+        "text": "The Supreme Court of India has issued guidelines directing platforms to label unverified news. This is per official court order dated Jan 2025.",
+        "label": "real",
+        "source": "Supreme Court of India bulletin",
+        "published_at": "2025-01-15",
+        "url": "https://example.org/sc-fakenews-order-real",
+        "snippet": "Verified court order published on official judiciary portal.",
+        "family_tree": [],
+    },
+    {
+        "id": "claim-011",
+        "title": "Snake in Maggi Noodles Viral Image",
+        "text": "A dead snake was found inside a sealed Maggi packet in Maharashtra. This photo is being shared as proof.",
+        "label": "misleading",
+        "source": "Food safety fact-check desk",
+        "published_at": "2024-03-22",
+        "url": "https://example.org/maggi-snake-misleading",
+        "snippet": "Image is real but unrelated to Maggi; originally from Southeast Asia.",
+        "family_tree": [
+            {"id": "ft-2015-i", "title": "Maggi Ban-era food scare", "label": "misleading", "year": 2015, "variation_note": "Combined with Maggi ban controversy", "similarity": 0.82},
+            {"id": "ft-2024-i", "title": "Foreign object in noodles – 2024", "label": "misleading", "year": 2024, "variation_note": "Image swapped to Indian brand", "similarity": 0.87},
+        ],
+    },
+    {
+        "id": "claim-012",
+        "title": "Free LPG Cylinder Scheme – Phishing",
+        "text": "Government is giving 3 free LPG cylinders to BPL families. Fill this form with your Aadhaar number and address to claim.",
+        "label": "scam",
+        "source": "MNGL fraud alert",
+        "published_at": "2023-04-10",
+        "url": "https://example.org/lpg-free-scam",
+        "snippet": "Fake government welfare form harvesting Aadhaar data.",
+        "family_tree": [
+            {"id": "ft-2022-j", "title": "Ujjwala Yojana phishing form", "label": "scam", "year": 2022, "variation_note": "Used Ujjwala scheme branding", "similarity": 0.90},
+            {"id": "ft-2023-j", "title": "LPG subsidy scam 2023", "label": "scam", "year": 2023, "variation_note": "Redirected to payment page", "similarity": 0.87},
+        ],
+    },
+    {
+        "id": "claim-013",
+        "title": "Photo of Flooded City Misattributed",
+        "text": "Shocking flood in Bengaluru – entire city submerged! Look at this photo. Shared widely in 2024.",
+        "label": "misleading",
+        "source": "Alt-news fact check",
+        "published_at": "2024-09-01",
+        "url": "https://example.org/bengaluru-flood-misleading",
+        "snippet": "Photo is from Kerala floods of 2018, misattributed to Bengaluru 2024.",
+        "family_tree": [
+            {"id": "ft-2018-k", "title": "Kerala floods original image", "label": "real-context-mismatch", "year": 2018, "variation_note": "Original real image", "similarity": 0.88},
+            {"id": "ft-2022-k", "title": "Chennai floods misattributed", "label": "misleading", "year": 2022, "variation_note": "Same photo re-labeled for Chennai", "similarity": 0.84},
+        ],
+    },
+
+    # ─────────────────────────────────────────────
+    # HINDI – SCAM / MISLEADING / REAL / FAKE
+    # ─────────────────────────────────────────────
+    {
+        "id": "claim-014",
+        "title": "Pradhan Mantri Awas Yojana Fake Form",
+        "text": "प्रधानमंत्री आवास योजना के तहत सरकार सभी गरीब परिवारों को ₹2.5 लाख दे रही है। नीचे दिए लिंक पर अपना नाम और आधार नंबर भरें।",
+        "label": "scam",
+        "source": "PIB Fact Check",
+        "published_at": "2023-06-20",
+        "url": "https://example.org/pmay-fake-form",
+        "snippet": "सरकारी योजना की आड़ में आधार डेटा चुराने का फ़िशिंग अभियान।",
+        "family_tree": [
+            {"id": "ft-2021-l", "title": "आवास योजना SMS घोटाला", "label": "scam", "year": 2021, "variation_note": "एसएमएस के ज़रिए फैलाया गया", "similarity": 0.91},
+            {"id": "ft-2023-l", "title": "PMAY 2023 WhatsApp फ़ॉर्म", "label": "scam", "year": 2023, "variation_note": "WhatsApp PDF फॉर्म", "similarity": 0.88},
+        ],
+    },
+    {
+        "id": "claim-015",
+        "title": "नमक से कैंसर ठीक होता है – झूठा दावा",
+        "text": "वैज्ञानिकों ने साबित किया है कि हर सुबह खाली पेट काला नमक खाने से कैंसर की कोशिकाएं नष्ट हो जाती हैं।",
+        "label": "fake",
+        "source": "स्वास्थ्य मंत्रालय मिथ-बस्टर",
+        "published_at": "2022-11-05",
+        "url": "https://example.org/namak-cancer-fake",
+        "snippet": "चिकित्सकीय रूप से गलत दावा, किसी वैज्ञानिक अध्ययन से असंबद्ध।",
+        "family_tree": [
+            {"id": "ft-2020-m", "title": "हल्दी से कैंसर – झूठी खबर", "label": "fake", "year": 2020, "variation_note": "हल्दी का उपयोग", "similarity": 0.80},
+            {"id": "ft-2022-m", "title": "नमक-पानी थेरेपी दावा", "label": "fake", "year": 2022, "variation_note": "नमक-पानी का संस्करण", "similarity": 0.85},
+        ],
+    },
+    {
+        "id": "claim-016",
+        "title": "बाल मजदूरी विरोधी अधिनियम – असली अधिसूचना",
+        "text": "श्रम मंत्रालय ने 14 वर्ष से कम आयु के बच्चों को किसी भी व्यावसायिक प्रतिष्ठान में नियुक्त करने पर प्रतिबंध लगाने वाली नई अधिसूचना जारी की है।",
+        "label": "real",
+        "source": "श्रम एवं रोजगार मंत्रालय, भारत सरकार",
+        "published_at": "2024-12-01",
+        "url": "https://example.org/child-labour-act-real",
+        "snippet": "आधिकारिक राजपत्र अधिसूचना से सत्यापित।",
+        "family_tree": [],
+    },
+    {
+        "id": "claim-017",
+        "title": "पुरानी तस्वीर को हालिया सांप्रदायिक हिंसा बताया",
+        "text": "यह तस्वीर उत्तर प्रदेश में हाल की हिंसा को दर्शाती है। शेयर करें ताकि सच्चाई सामने आए।",
+        "label": "misleading",
+        "source": "Boom Live Fact Check",
+        "published_at": "2024-05-18",
+        "url": "https://example.org/up-violence-misleading",
+        "snippet": "तस्वीर 2013 की मुजफ्फरनगर दंगों की है, 2024 की नहीं।",
+        "family_tree": [
+            {"id": "ft-2013-n", "title": "मुजफ्फरनगर 2013 – असली तस्वीर", "label": "real-context-mismatch", "year": 2013, "variation_note": "मूल छवि", "similarity": 0.90},
+            {"id": "ft-2024-n", "title": "2024 में गलत कैप्शन के साथ पुनः प्रसारित", "label": "misleading", "year": 2024, "variation_note": "नई घटना से जोड़ा", "similarity": 0.86},
+        ],
+    },
+    {
+        "id": "claim-018",
+        "title": "डिजिटल अरेस्ट स्कैम – साइबर पुलिस चेतावनी",
+        "text": "एक व्यक्ति का वीडियो कॉल आता है जो खुद को CBI अधिकारी बताता है और कहता है आपके नाम पर ड्रग्स का पार्सल पकड़ा गया है। ₹50,000 देने पर छोड़ेंगे।",
+        "label": "scam",
+        "source": "साइबर क्राइम पोर्टल, गृह मंत्रालय",
+        "published_at": "2024-02-14",
+        "url": "https://example.org/digital-arrest-scam",
+        "snippet": "डिजिटल अरेस्ट स्कैम जिसमें CBI/ED का रूप धारण किया जाता है।",
+        "family_tree": [
+            {"id": "ft-2023-o", "title": "FedEx पार्सल स्कैम", "label": "scam", "year": 2023, "variation_note": "कूरियर कंपनी का रूप", "similarity": 0.88},
+            {"id": "ft-2024-o", "title": "TRAI नंबर बंद करने का डर", "label": "scam", "year": 2024, "variation_note": "TRAI अधिकारी बनकर कॉल", "similarity": 0.85},
+        ],
+    },
+    {
+        "id": "claim-019",
+        "title": "पेट्रोल के दाम में कटौती – असली खबर",
+        "text": "केंद्र सरकार ने पेट्रोल और डीजल पर उत्पाद शुल्क में ₹2 की कमी की है जो 1 जनवरी 2025 से लागू होगी।",
+        "label": "real",
+        "source": "वित्त मंत्रालय प्रेस विज्ञप्ति",
+        "published_at": "2024-12-28",
+        "url": "https://example.org/petrol-cut-real",
+        "snippet": "आधिकारिक बजट घोषणा के अनुरूप सत्यापित समाचार।",
+        "family_tree": [],
+    },
+    {
+        "id": "claim-020",
+        "title": "ब्लड ग्रुप बदल जाता है COVID वैक्सीन से – झूठा दावा",
+        "text": "COVID वैक्सीन लेने से आपका ब्लड ग्रुप O+ से A+ हो सकता है। कई लोगों ने इसका अनुभव किया है।",
+        "label": "fake",
+        "source": "ICMR मिथक-भंजन",
+        "published_at": "2021-09-10",
+        "url": "https://example.org/vaccine-blood-group-fake",
+        "snippet": "रक्त समूह जीवन में नहीं बदलता; यह दावा पूरी तरह असत्य है।",
+        "family_tree": [
+            {"id": "ft-2021-p1", "title": "वैक्सीन से DNA बदलता है – झूठ", "label": "fake", "year": 2021, "variation_note": "DNA परिवर्तन का दावा", "similarity": 0.83},
+            {"id": "ft-2021-p2", "title": "वैक्सीन में चिप है – झूठ", "label": "fake", "year": 2021, "variation_note": "माइक्रोचिप षड्यंत्र", "similarity": 0.78},
+        ],
+    },
+    {
+        "id": "claim-021",
+        "title": "सरकारी नौकरी झांसा – OTP फ्रॉड",
+        "text": "UPSC की बिना परीक्षा के भर्ती निकली है। रजिस्ट्रेशन के लिए ₹500 फीस और OTP भेजें। सीटें सीमित हैं।",
+        "label": "scam",
+        "source": "UPSC सायबर सेल",
+        "published_at": "2024-01-22",
+        "url": "https://example.org/upsc-fake-recruitment",
+        "snippet": "UPSC कभी बिना परीक्षा भर्ती नहीं करती; यह फ़िशिंग लिंक है।",
+        "family_tree": [
+            {"id": "ft-2023-q", "title": "SSC बिना परीक्षा भर्ती घोटाला", "label": "scam", "year": 2023, "variation_note": "SSC ब्रांडिंग", "similarity": 0.89},
+        ],
+    },
+    {
+        "id": "claim-022",
+        "title": "भारत में 5G से पक्षी मर रहे हैं – झूठी खबर",
+        "text": "देश में 5G टावर लगने के बाद हजारों पक्षी मृत पाए गए हैं। वैज्ञानिकों ने इसे छुपाया है।",
+        "label": "fake",
+        "source": "DoT तथ्य-जाँच",
+        "published_at": "2022-10-30",
+        "url": "https://example.org/5g-birds-fake",
+        "snippet": "कोई वैज्ञानिक प्रमाण नहीं; पक्षी मृत्यु का कारण अलग था।",
+        "family_tree": [
+            {"id": "ft-2020-r", "title": "5G कोरोना वायरस षड्यंत्र", "label": "fake", "year": 2020, "variation_note": "COVID से जोड़ा गया", "similarity": 0.82},
+        ],
+    },
+
+    # ─────────────────────────────────────────────
+    # TAMIL – SCAM / MISLEADING / REAL / FAKE
+    # ─────────────────────────────────────────────
     {
         "id": "claim-004",
         "title": "Tamil Free Gift Voucher Forward",
@@ -52,12 +303,646 @@ SEED_RECORDS = [
         "url": "https://example.org/tamil-voucher-scam",
         "snippet": "Tamil phishing message offering free gift vouchers.",
         "family_tree": [
-            {"id": "ft-2023-c", "title": "Festival voucher phishing", "label": "scam", "year": 2023, "variation_note": "Tamil festive bait", "similarity": 0.87}
-        ]
-    }
+            {"id": "ft-2023-c", "title": "Festival voucher phishing", "label": "scam", "year": 2023, "variation_note": "Tamil festive bait", "similarity": 0.87},
+        ],
+    },
+    {
+        "id": "claim-023",
+        "title": "தமிழ்நாடு அரசு இலவச லேப்டாப் – போலி செய்தி",
+        "text": "தமிழ்நாடு அரசு அனைத்து மாணவர்களுக்கும் இலவச லேப்டாப் கொடுக்கிறது. இந்த படிவத்தை நிரப்பி Aadhaar நம்பரை கொடுங்கள்.",
+        "label": "scam",
+        "source": "Tamil Nadu Cyber Crime Wing",
+        "published_at": "2024-07-10",
+        "url": "https://example.org/tn-laptop-scam",
+        "snippet": "அரசு திட்டத்தின் பெயரில் ஆதார் தகவல்களை திருடும் ஃபிஷிங் பக்கம்.",
+        "family_tree": [
+            {"id": "ft-2021-s", "title": "இலவச லேப்டாப் SMS மோசடி 2021", "label": "scam", "year": 2021, "variation_note": "SMS வழியாக பரப்பப்பட்டது", "similarity": 0.90},
+            {"id": "ft-2024-s", "title": "WhatsApp மூலம் லேப்டாப் ஃபார்ம்", "label": "scam", "year": 2024, "variation_note": "WhatsApp PDF ஃபார்ம்", "similarity": 0.87},
+        ],
+    },
+    {
+        "id": "claim-024",
+        "title": "நீர்க்கோழி கறி சாப்பிட்டால் புற்றுநோய் வரும் – தவறான தகவல்",
+        "text": "சமீபத்திய ஆய்வில் நீர்க்கோழி இறைச்சி சாப்பிட்டால் கோலன் புற்றுநோய் வர வாய்ப்பு 80% அதிகரிக்கும் என்று கண்டறியப்பட்டது.",
+        "label": "fake",
+        "source": "ICMR தமிழ் கிளை",
+        "published_at": "2023-08-15",
+        "url": "https://example.org/duck-cancer-fake-ta",
+        "snippet": "எந்த மருத்துவ ஆய்வாலும் இது நிரூபிக்கப்படவில்லை.",
+        "family_tree": [
+            {"id": "ft-2022-t", "title": "கோழி கறி புற்றுநோய் வதந்தி", "label": "fake", "year": 2022, "variation_note": "கோழி இறைச்சிக்கு பயன்படுத்தப்பட்டது", "similarity": 0.78},
+        ],
+    },
+    {
+        "id": "claim-025",
+        "title": "சென்னை மழை வெள்ளம் – தவறான படம்",
+        "text": "சென்னையில் இன்று பெரும் வெள்ளம்! இந்த படம் பாருங்கள், மக்கள் மாடிகளில் தஞ்சமடைந்துள்ளனர்.",
+        "label": "misleading",
+        "source": "The News Minute Fact Check",
+        "published_at": "2023-12-05",
+        "url": "https://example.org/chennai-flood-misleading",
+        "snippet": "படம் கேரளாவில் 2021ல் எடுக்கப்பட்டது; சென்னை மழையுடன் தொடர்பில்லை.",
+        "family_tree": [
+            {"id": "ft-2015-u", "title": "சென்னை வெள்ளம் 2015 – அசல்", "label": "real-context-mismatch", "year": 2015, "variation_note": "அசல் படம்", "similarity": 0.85},
+            {"id": "ft-2023-u", "title": "2023 வெள்ள மோசடி பட பரவல்", "label": "misleading", "year": 2023, "variation_note": "கேரள படம் சென்னை என தவறாகக் குறிப்பிட்டது", "similarity": 0.88},
+        ],
+    },
+    {
+        "id": "claim-026",
+        "title": "தமிழ்நாடு NEET தேர்வு ரத்து – அதிகாரப்பூர்வ அறிவிப்பு",
+        "text": "தமிழ்நாடு அரசு 2024 NEET தேர்வை மாநிலத்திற்கு விலக்கு கோரி மத்திய அரசிடம் மீண்டும் கோரிக்கை வைத்துள்ளது. உச்ச நீதிமன்றம் விசாரணை நடத்துகிறது.",
+        "label": "real",
+        "source": "The Hindu Tamil",
+        "published_at": "2024-04-10",
+        "url": "https://example.org/tn-neet-real",
+        "snippet": "தமிழ்நாடு அரசின் அதிகாரப்பூர்வ சட்டமன்ற தீர்மானத்தின் அடிப்படையில் சரிபார்க்கப்பட்டது.",
+        "family_tree": [],
+    },
+    {
+        "id": "claim-027",
+        "title": "WhatsApp-ல் அரசாங்க பணம் வருகிறது – மோசடி",
+        "text": "தமிழ்நாடு அரசு WhatsApp மூலம் ₹10,000 நேரடியாக கணக்கில் போடுகிறது. இந்த லிங்கை கிளிக் செய்து உங்கள் வங்கி விவரங்களை கொடுங்கள்.",
+        "label": "scam",
+        "source": "Tamil Nadu Police Cyber Crime",
+        "published_at": "2024-03-18",
+        "url": "https://example.org/tn-whatsapp-money-scam",
+        "snippet": "WhatsApp மூலம் அரசு எந்த பணமும் அனுப்புவதில்லை; இது ஃபிஷிங் லிங்க்.",
+        "family_tree": [
+            {"id": "ft-2023-v", "title": "கலைஞர் திட்டம் WhatsApp மோசடி", "label": "scam", "year": 2023, "variation_note": "திட்ட பெயரை பயன்படுத்தியது", "similarity": 0.89},
+        ],
+    },
+    {
+        "id": "claim-028",
+        "title": "நர்சரி மரங்களில் நஞ்சு – வதந்தி",
+        "text": "சென்னையில் விற்கப்படும் நர்சரி தாவரங்களில் பூச்சிக்கொல்லி கலந்திருப்பதால் குழந்தைகள் மயங்கி விழுகின்றனர் என்று சிறப்பு ஆய்வு கண்டறிந்துள்ளது.",
+        "label": "fake",
+        "source": "Chennai Consumer Cell",
+        "published_at": "2022-06-14",
+        "url": "https://example.org/nursery-poison-fake",
+        "snippet": "எந்த அதிகாரப்பூர்வ ஆய்வோ புகாரோ இல்லை; வதந்தி மட்டுமே.",
+        "family_tree": [],
+    },
+
+    # ─────────────────────────────────────────────
+    # HINGLISH – SCAM / MISLEADING / REAL / FAKE
+    # ─────────────────────────────────────────────
+    {
+        "id": "claim-029",
+        "title": "Amazon Lucky Draw Scam – Hinglish",
+        "text": "Bhai sunno! Amazon ka 25th anniversary lucky draw hai aur tumhara number select hua hai. ₹50,000 jeeto, sirf is link par OTP dalo.",
+        "label": "scam",
+        "source": "Cyber Dost Twitter handle",
+        "published_at": "2024-06-22",
+        "url": "https://example.org/amazon-lucky-draw-hinglish",
+        "snippet": "Amazon ke naam par OTP leke fraud karna ek popular phishing trick hai.",
+        "family_tree": [
+            {"id": "ft-2022-w", "title": "Flipkart 20th Anniversary Scam", "label": "scam", "year": 2022, "variation_note": "Flipkart brand use kiya", "similarity": 0.88},
+            {"id": "ft-2023-w", "title": "Amazon Big Sale Lucky Draw 2023", "label": "scam", "year": 2023, "variation_note": "Sale ke time target kiya", "similarity": 0.91},
+        ],
+    },
+    {
+        "id": "claim-030",
+        "title": "Petrol me Paani – Viral Rumour",
+        "text": "Yaar seriously, meri gaadi kharab ho gayi kyunki petrol pump wale paani mila rahe hain. Iss petrol pump ka naam share karo, sabko pata hona chahiye!",
+        "label": "misleading",
+        "source": "Consumer affairs fact check",
+        "published_at": "2023-09-05",
+        "url": "https://example.org/petrol-paani-misleading",
+        "snippet": "Gaadi kharab hona multiple causes se ho sakta hai; pump adulteration proved nahi.",
+        "family_tree": [
+            {"id": "ft-2021-x", "title": "Petrol pump adulteration viral 2021", "label": "misleading", "year": 2021, "variation_note": "Pehli baar viral hua", "similarity": 0.82},
+        ],
+    },
+    {
+        "id": "claim-031",
+        "title": "Bijli Bill Maafi Scheme – Scam",
+        "text": "Sarkar ne sabka purana bijli ka bill maaf kar diya! Form bharo aur apna account number do. 24 ghante mein bill zero ho jayega.",
+        "label": "scam",
+        "source": "DISCOM fraud alert",
+        "published_at": "2024-02-28",
+        "url": "https://example.org/bijli-maafi-scam",
+        "snippet": "Fake government scheme targeting electricity consumers for bank details.",
+        "family_tree": [
+            {"id": "ft-2022-y", "title": "Bijli Bill Half Yojana 2022", "label": "scam", "year": 2022, "variation_note": "Half bill claim", "similarity": 0.87},
+            {"id": "ft-2024-y", "title": "Free solar bill scam 2024", "label": "scam", "year": 2024, "variation_note": "Solar scheme se joda", "similarity": 0.83},
+        ],
+    },
+    {
+        "id": "claim-032",
+        "title": "Coldplay India Tour – Real News",
+        "text": "Coldplay officially confirmed hai ki unka Music of the Spheres World Tour India mein hoga – Mumbai aur Ahmedabad mein January 2025 mein shows honge.",
+        "label": "real",
+        "source": "BookMyShow official announcement",
+        "published_at": "2024-07-26",
+        "url": "https://example.org/coldplay-india-real",
+        "snippet": "Confirmed official announcement from the band and ticketing partner.",
+        "family_tree": [],
+    },
+    {
+        "id": "claim-033",
+        "title": "Pyaz Khaane se Dengue Thik Hota Hai – Jhoota Dawa",
+        "text": "Doctor ne bataya hai ki roz raw pyaz khane se dengue platelet count badh jata hai. Ye gharelu nuskha 100% kaam karta hai.",
+        "label": "fake",
+        "source": "AIIMS myth buster",
+        "published_at": "2023-10-12",
+        "url": "https://example.org/onion-dengue-fake",
+        "snippet": "Koi bhi clinical evidence nahi; platelet count ke liye medical treatment zaroori hai.",
+        "family_tree": [
+            {"id": "ft-2019-z", "title": "Papaya leaf dengue cure claim", "label": "misleading", "year": 2019, "variation_note": "Papaya leaf ka dawa", "similarity": 0.77},
+            {"id": "ft-2023-z", "title": "Pyaz-dengue TikTok viral", "label": "fake", "year": 2023, "variation_note": "TikTok par viral hua", "similarity": 0.84},
+        ],
+    },
+    {
+        "id": "claim-034",
+        "title": "Paytm Cashback Unlimited Glitch – Scam",
+        "text": "Yaar ek glitch mili hai Paytm mein! Is UPI ID pe ₹1 bhejo aur ₹500 wapas aate hain. Try karo jaldi se!",
+        "label": "scam",
+        "source": "Paytm fraud alert",
+        "published_at": "2023-03-07",
+        "url": "https://example.org/paytm-glitch-scam",
+        "snippet": "Classic advance-fee fraud disguised as a cashback glitch.",
+        "family_tree": [
+            {"id": "ft-2021-aa", "title": "GPay glitch cashback scam 2021", "label": "scam", "year": 2021, "variation_note": "GPay brand use kiya", "similarity": 0.89},
+        ],
+    },
+    {
+        "id": "claim-035",
+        "title": "PM Kisan Samman Nidhi 18th Installment – Real",
+        "text": "PM-KISAN yojana ki 18vi kist ₹2,000 direct farmers ke accounts mein credited ho gayi hai. Official portal pmkisan.gov.in par apna status check karo.",
+        "label": "real",
+        "source": "Agriculture Ministry press release",
+        "published_at": "2024-10-15",
+        "url": "https://example.org/pmkisan-18th-real",
+        "snippet": "Agriculture ministry se official press release ke saath verified.",
+        "family_tree": [],
+    },
+    {
+        "id": "claim-036",
+        "title": "India ne China ka App Ban Kiya – Purana News 2024 ka Batana",
+        "text": "Breaking: India ne aaj 300 Chinese apps ban kar diye hain jisme Instagram aur WhatsApp bhi shamil hain!",
+        "label": "fake",
+        "source": "MeitY fact check",
+        "published_at": "2024-04-01",
+        "url": "https://example.org/india-app-ban-fake",
+        "snippet": "India ne sirf specific Chinese apps ban kiye hain; WhatsApp/Instagram is list mein nahi hain.",
+        "family_tree": [
+            {"id": "ft-2020-bb", "title": "TikTok ban 2020 – real par galat suchna mili", "label": "misleading", "year": 2020, "variation_note": "Real ban ke saath mixed", "similarity": 0.80},
+        ],
+    },
+    {
+        "id": "claim-037",
+        "title": "Viral Video: Neta Ne Paisa Baanta – Context Missing",
+        "text": "Dekho is neta ne openly public mein paise baante, kya yahi democracy hai? Video share karo!",
+        "label": "misleading",
+        "source": "Newslaundry fact check",
+        "published_at": "2024-04-20",
+        "url": "https://example.org/neta-paisa-misleading",
+        "snippet": "Video mein jo ho raha hai wo ek registered charity event tha, not vote buying.",
+        "family_tree": [],
+    },
+
+    # ─────────────────────────────────────────────
+    # ENGLISH – ADDITIONAL CLAIMS
+    # ─────────────────────────────────────────────
+    {
+        "id": "claim-038",
+        "title": "Fake Income Tax Refund SMS",
+        "text": "Dear taxpayer, your income tax refund of ₹18,500 is pending. Click here and enter your PAN and bank details to receive the amount.",
+        "label": "scam",
+        "source": "Income Tax Dept advisory",
+        "published_at": "2024-07-31",
+        "url": "https://example.org/it-refund-scam",
+        "snippet": "IT dept impersonation scam targeting PAN and bank credentials.",
+        "family_tree": [
+            {"id": "ft-2022-cc", "title": "IT Refund Phishing 2022", "label": "scam", "year": 2022, "variation_note": "Email phishing", "similarity": 0.91},
+            {"id": "ft-2024-cc", "title": "IT Refund WhatsApp SMS 2024", "label": "scam", "year": 2024, "variation_note": "SMS-based attack", "similarity": 0.88},
+        ],
+    },
+    {
+        "id": "claim-039",
+        "title": "Eating Ice Cream During Monsoon Causes Typhoid",
+        "text": "Health experts warn that eating ice cream during monsoon season dramatically increases your risk of typhoid and cholera.",
+        "label": "misleading",
+        "source": "Times Health Fact Check",
+        "published_at": "2023-07-20",
+        "url": "https://example.org/icecream-typhoid-misleading",
+        "snippet": "Risk is from contaminated water/food hygiene, not ice cream per se.",
+        "family_tree": [],
+    },
+    {
+        "id": "claim-040",
+        "title": "UPI Payment Limit Increased to ₹5 Lakh – Real",
+        "text": "The National Payments Corporation of India (NPCI) has raised the per-transaction UPI limit to ₹5 lakh for select categories including healthcare and education.",
+        "label": "real",
+        "source": "NPCI official circular",
+        "published_at": "2024-09-01",
+        "url": "https://example.org/upi-limit-real",
+        "snippet": "Verified NPCI circular with effective date and category list.",
+        "family_tree": [],
+    },
+    {
+        "id": "claim-041",
+        "title": "Fake Earthquake Warning App Scam",
+        "text": "Install this Earthquake Alert app to get warnings 10 minutes before any quake. Government-approved. Download now.",
+        "label": "scam",
+        "source": "National Disaster Management Authority",
+        "published_at": "2023-02-08",
+        "url": "https://example.org/earthquake-app-scam",
+        "snippet": "No such government-approved app exists; malware harvesting contacts and SMS.",
+        "family_tree": [
+            {"id": "ft-2023-dd", "title": "Turkey quake aftermath app scam", "label": "scam", "year": 2023, "variation_note": "Piggybacked on Turkey earthquake news", "similarity": 0.84},
+        ],
+    },
+    {
+        "id": "claim-042",
+        "title": "India Wins ICC World Cup 2024 – Real",
+        "text": "India defeated South Africa in the T20 World Cup 2024 final in Barbados, winning by 7 runs to claim their second T20 World Cup title.",
+        "label": "real",
+        "source": "ICC official records",
+        "published_at": "2024-06-29",
+        "url": "https://example.org/india-t20-wc-real",
+        "snippet": "Verified match result from ICC and multiple sports outlets.",
+        "family_tree": [],
+    },
+    {
+        "id": "claim-043",
+        "title": "Rats in Bisleri Factory – Viral Photo",
+        "text": "Shocking! Rats found inside Bisleri water factory. This photo was leaked by an insider. Stop buying Bisleri immediately!",
+        "label": "misleading",
+        "source": "FSSAI Fact Check",
+        "published_at": "2023-05-12",
+        "url": "https://example.org/bisleri-rats-misleading",
+        "snippet": "Photo is from a different country's water factory; FSSAI audit found no violations.",
+        "family_tree": [
+            {"id": "ft-2021-ee", "title": "Another brand rat scam – 2021", "label": "misleading", "year": 2021, "variation_note": "Different water brand targeted", "similarity": 0.83},
+        ],
+    },
+    {
+        "id": "claim-044",
+        "title": "Free Railway Ticket on Independence Day – Scam",
+        "text": "Indian Railways is offering free tickets for all trains on 15 August. Share this link with 10 friends to unlock your free ticket.",
+        "label": "scam",
+        "source": "Indian Railways PIB fact check",
+        "published_at": "2024-08-10",
+        "url": "https://example.org/railway-free-ticket-scam",
+        "snippet": "Railways shares no such promotion; link harvests personal data.",
+        "family_tree": [
+            {"id": "ft-2022-ff", "title": "Republic Day free ticket scam 2022", "label": "scam", "year": 2022, "variation_note": "Republic Day version", "similarity": 0.90},
+        ],
+    },
+    {
+        "id": "claim-045",
+        "title": "Ganges Water Has Self-Purification Properties – Real (Scientific)",
+        "text": "Peer-reviewed studies confirm that Ganga water contains unique bacteriophages and silver ions that give it antimicrobial properties, though it still requires treatment for safe drinking.",
+        "label": "real",
+        "source": "IIT Roorkee Research Publication",
+        "published_at": "2022-03-15",
+        "url": "https://example.org/ganga-bacteriophage-real",
+        "snippet": "Scientifically confirmed antimicrobial property with nuanced safety caveat.",
+        "family_tree": [],
+    },
+    {
+        "id": "claim-046",
+        "title": "Free Aarogya Setu Data Sold – Conspiracy Claim",
+        "text": "The Indian government is secretly selling your health data collected by Aarogya Setu to foreign pharmaceutical companies.",
+        "label": "fake",
+        "source": "MeitY clarification",
+        "published_at": "2021-02-18",
+        "url": "https://example.org/aarogya-data-fake",
+        "snippet": "No evidence of data sale; government denied claim with data storage audit.",
+        "family_tree": [],
+    },
+    {
+        "id": "claim-047",
+        "title": "Acid Rain Burning Skin in Tamil Nadu – Viral Claim",
+        "text": "Dangerous acid rain is falling in Tamil Nadu. It is burning people's skin on contact. Stay indoors and do not go out.",
+        "label": "fake",
+        "source": "IMD weather fact check",
+        "published_at": "2023-06-01",
+        "url": "https://example.org/acid-rain-tn-fake",
+        "snippet": "IMD confirmed no acid rain; normal monsoon rainfall with no chemical contamination.",
+        "family_tree": [
+            {"id": "ft-2023-gg", "title": "Acid rain Mumbai scare", "label": "fake", "year": 2023, "variation_note": "Mumbai version circulated simultaneously", "similarity": 0.86},
+        ],
+    },
+
+    # ─────────────────────────────────────────────
+    # HINDI – ADDITIONAL CLAIMS
+    # ─────────────────────────────────────────────
+    {
+        "id": "claim-048",
+        "title": "ATM से पैसे निकालते समय कार्ड क्लोन – सावधानी",
+        "text": "दिल्ली में कई ATM पर कार्ड स्किमर लगे पाए गए हैं। अपना PIN हमेशा ढककर डालें और अज्ञात ATM से बचें।",
+        "label": "real",
+        "source": "दिल्ली पुलिस साइबर सेल",
+        "published_at": "2024-11-10",
+        "url": "https://example.org/atm-skimmer-real",
+        "snippet": "दिल्ली पुलिस की आधिकारिक प्रेस विज्ञप्ति से सत्यापित।",
+        "family_tree": [],
+    },
+    {
+        "id": "claim-049",
+        "title": "गाय के दूध से AIDS ठीक होता है – झूठ",
+        "text": "एक आश्रम के बाबा ने दावा किया कि देसी गाय के कच्चे दूध में AIDS को ठीक करने की शक्ति है। इसका प्रमाण वैदिक ग्रंथों में है।",
+        "label": "fake",
+        "source": "NACO मिथक-भंजन",
+        "published_at": "2022-08-22",
+        "url": "https://example.org/cow-milk-aids-fake",
+        "snippet": "HIV/AIDS का कोई घरेलू इलाज नहीं; यह खतरनाक दुष्प्रचार है।",
+        "family_tree": [],
+    },
+    {
+        "id": "claim-050",
+        "title": "मोदी सरकार ने किसानों का पूरा कर्ज माफ किया – भ्रामक खबर",
+        "text": "सरकार ने सभी किसानों का संपूर्ण ऋण माफ कर दिया है। 7 दिनों में पैसा खाते में आएगा।",
+        "label": "misleading",
+        "source": "PIB Fact Check",
+        "published_at": "2024-03-30",
+        "url": "https://example.org/kisan-karz-misleading",
+        "snippet": "केवल चुनिंदा राज्यों में सीमित ऋण माफी; सर्वव्यापी नहीं।",
+        "family_tree": [
+            {"id": "ft-2019-hh", "title": "2019 चुनाव से पहले कर्ज माफी अफवाह", "label": "misleading", "year": 2019, "variation_note": "चुनावी मौसम में वायरल हुई", "similarity": 0.85},
+        ],
+    },
+    {
+        "id": "claim-051",
+        "title": "रेलवे IRCTC का नया नियम – असली",
+        "text": "IRCTC ने घोषणा की है कि अब Tatkal टिकट बुकिंग ट्रेन चलने से 24 घंटे पहले तक की जा सकेगी। यह 1 जनवरी 2025 से लागू होगा।",
+        "label": "real",
+        "source": "IRCTC आधिकारिक प्रेस विज्ञप्ति",
+        "published_at": "2024-12-20",
+        "url": "https://example.org/irctc-tatkal-real",
+        "snippet": "IRCTC की आधिकारिक वेबसाइट पर अधिसूचना प्रकाशित।",
+        "family_tree": [],
+    },
+    {
+        "id": "claim-052",
+        "title": "बिना ATM के UPI से कैश निकालो – घोटाला",
+        "text": "अब बिना ATM जाए घर बैठे UPI से cash निकालो। बस इस नंबर पर ₹500 भेजो और ₹5000 का नकद कूरियर से मिलेगा।",
+        "label": "scam",
+        "source": "Cyber Dost NPCI",
+        "published_at": "2023-11-15",
+        "url": "https://example.org/upi-cash-scam",
+        "snippet": "Classic advance-fee scam disguised as a UPI cashout trick.",
+        "family_tree": [],
+    },
+    {
+        "id": "claim-053",
+        "title": "प्रयागराज महाकुंभ – भगदड़ की झूठी अफवाह",
+        "text": "महाकुंभ 2025 में भगदड़ मचने से 500 लोगों की मौत! अभी शेयर करो।",
+        "label": "misleading",
+        "source": "UP Police official statement",
+        "published_at": "2025-01-20",
+        "url": "https://example.org/kumbh-stampede-misleading",
+        "snippet": "छोटी भगदड़ की घटना हुई थी पर मृत्यु संख्या अत्यधिक बढ़ा-चढ़ाकर बताई गई।",
+        "family_tree": [
+            {"id": "ft-2013-ii", "title": "इलाहाबाद कुंभ 2013 भगदड़ – असली", "label": "real-context-mismatch", "year": 2013, "variation_note": "पुरानी घटना का मिश्रण", "similarity": 0.80},
+        ],
+    },
+
+    # ─────────────────────────────────────────────
+    # HINGLISH – ADDITIONAL CLAIMS
+    # ─────────────────────────────────────────────
+    {
+        "id": "claim-054",
+        "title": "Jio vs Airtel Speed Test – Misleading Video",
+        "text": "Dekho is video mein Jio ki speed Airtel se 10x zyada hai. Airtel wale pagal hain jo itna charge karte hain!",
+        "label": "misleading",
+        "source": "TRAI telecom watchdog",
+        "published_at": "2024-01-08",
+        "url": "https://example.org/jio-airtel-speed-misleading",
+        "snippet": "Speed test conditions controlled; not representative of average performance.",
+        "family_tree": [],
+    },
+    {
+        "id": "claim-055",
+        "title": "Sunscreen Causes Skin Cancer – Jhoota Dawa",
+        "text": "Yaar sunscreen mat lagao! Research mein saamne aaya hai ki sunscreen ke chemicals skin cancer ka risk 3 guna bada dete hain.",
+        "label": "fake",
+        "source": "Dermatology Society of India",
+        "published_at": "2023-04-25",
+        "url": "https://example.org/sunscreen-cancer-fake",
+        "snippet": "WHO aur DSI dono confirm karte hain sunscreen UV protection deta hai; cancer nahi deta.",
+        "family_tree": [],
+    },
+    {
+        "id": "claim-056",
+        "title": "Zomato Order Cancel Se ₹500 Cashback – Scam",
+        "text": "Ek trick hai: Zomato par order karo, immediately cancel karo, aur ₹500 wallet cashback lo! Tested and working.",
+        "label": "scam",
+        "source": "Zomato fraud alert",
+        "published_at": "2023-08-30",
+        "url": "https://example.org/zomato-cancel-scam",
+        "snippet": "Links promote unauthorized app versions that steal payment credentials.",
+        "family_tree": [
+            {"id": "ft-2022-jj", "title": "Swiggy cancel cashback trick", "label": "scam", "year": 2022, "variation_note": "Swiggy brand ke saath", "similarity": 0.87},
+        ],
+    },
+    {
+        "id": "claim-057",
+        "title": "Manmohan Singh Ka Nidhan – Real News",
+        "text": "Former Prime Minister Dr. Manmohan Singh ka 92 saal ki umra mein 26 December 2024 ko AIIMS Delhi mein nidhan ho gaya. Poora desh sunna mein hai.",
+        "label": "real",
+        "source": "PIB official statement",
+        "published_at": "2024-12-26",
+        "url": "https://example.org/manmohan-singh-real",
+        "snippet": "Verified from PMO and PIB official press statements.",
+        "family_tree": [],
+    },
+    {
+        "id": "claim-058",
+        "title": "Corona Vaccine ke baad Magnet Chipakta Hai – Fake",
+        "text": "Bhai dekho! Covid vaccine lagwane ke baad haath par magnet chipak raha hai. Ye sabit karta hai chip daali gayi hai. Video proof hai.",
+        "label": "fake",
+        "source": "ICMR anti-misinformation cell",
+        "published_at": "2021-06-01",
+        "url": "https://example.org/vaccine-magnet-fake",
+        "snippet": "Human body mein magnets nahi chipakti; ye skin oil/moisture ka effect hai.",
+        "family_tree": [
+            {"id": "ft-2021-kk", "title": "Vaccine-magnet global hoax", "label": "fake", "year": 2021, "variation_note": "Multiple countries mein viral", "similarity": 0.95},
+        ],
+    },
+    {
+        "id": "claim-059",
+        "title": "Google Pay Bounce Back Glitch – Scam",
+        "text": "Yaar Google Pay mein ek loophole hai. Kisi bhi number pe paise bhejo, 2 minute baad wapas account mein double hokar aata hai. Abhi try karo!",
+        "label": "scam",
+        "source": "NPCI fraud advisory",
+        "published_at": "2022-12-12",
+        "url": "https://example.org/gpay-glitch-scam",
+        "snippet": "Money doubling scam; payment goes to fraudster's account, nothing returns.",
+        "family_tree": [
+            {"id": "ft-2021-ll", "title": "PhonePe doubling glitch 2021", "label": "scam", "year": 2021, "variation_note": "PhonePe brand ke saath", "similarity": 0.91},
+        ],
+    },
+    {
+        "id": "claim-060",
+        "title": "Virat Kohli ne Cricket se Retirement Liya – Real",
+        "text": "Virat Kohli ne officially announce kiya hai ki woh Test cricket se retire ho rahe hain. BCCI ne statement release ki hai.",
+        "label": "real",
+        "source": "BCCI official press release",
+        "published_at": "2025-05-12",
+        "url": "https://example.org/kohli-retirement-real",
+        "snippet": "Verified BCCI statement confirmed by multiple sports correspondents.",
+        "family_tree": [],
+    },
+
+    # ─────────────────────────────────────────────
+    # TAMIL – ADDITIONAL CLAIMS
+    # ─────────────────────────────────────────────
+    {
+        "id": "claim-061",
+        "title": "ஜோதிடர் சொன்னது உண்மை – நிலநடுக்கம் வருகிறது",
+        "text": "புகழ்பெற்ற ஜோதிடர் கணித்துள்ளார்: தமிழ்நாட்டில் அடுத்த 48 மணி நேரத்தில் 7.5 ரிக்டர் அளவிலான நிலநடுக்கம் வரும். வீட்டை விட்டு வெளியே போகாதீர்கள்.",
+        "label": "fake",
+        "source": "National Centre for Seismology",
+        "published_at": "2023-09-20",
+        "url": "https://example.org/earthquake-prediction-fake-ta",
+        "snippet": "நிலநடுக்கத்தை யாராலும் துல்லியமாக முன்னறிவிக்க முடியாது; இது வதந்தி.",
+        "family_tree": [],
+    },
+    {
+        "id": "claim-062",
+        "title": "தமிழகத்தில் பெட்ரோல் விலை குறைப்பு – உண்மை",
+        "text": "மத்திய அரசு அறிவிப்பு: பெட்ரோல் விலை லிட்டருக்கு ₹2 குறைக்கப்பட்டுள்ளது. இது ஜனவரி 1, 2025 முதல் அமலுக்கு வரும்.",
+        "label": "real",
+        "source": "நிதி அமைச்சகம் செய்திக் குறிப்பு",
+        "published_at": "2024-12-28",
+        "url": "https://example.org/petrol-price-cut-real-ta",
+        "snippet": "அதிகாரப்பூர்வ அரசாங்க அறிவிப்பிலிருந்து சரிபார்க்கப்பட்டது.",
+        "family_tree": [],
+    },
+    {
+        "id": "claim-063",
+        "title": "WhatsApp Blue Tick Remove Trick – போலி தகவல்",
+        "text": "WhatsApp-ல் Blue Tick-ஐ நிரந்தரமாக அகற்ற இந்த app-ஐ download செய்யுங்கள். இது தனியுரிமையை 100% பாதுகாக்கும்.",
+        "label": "scam",
+        "source": "CERT-In cybersecurity advisory",
+        "published_at": "2023-07-22",
+        "url": "https://example.org/whatsapp-bluetick-scam-ta",
+        "snippet": "மூன்றாம் தரப்பு app spyware; WhatsApp built-in settings-ல் Blue tick அகற்றலாம்.",
+        "family_tree": [],
+    },
+    {
+        "id": "claim-064",
+        "title": "சித்தா மருத்துவம் சர்க்கரை வியாதியை குணப்படுத்தும் – தவறான உரிமைகோரல்",
+        "text": "ஒரு குறிப்பிட்ட சித்தா கஷாயம் 21 நாட்களில் Type-2 சர்க்கரை வியாதியை முழுமையாக குணப்படுத்தும் என்று ஆராய்ச்சியில் நிரூபிக்கப்பட்டுள்ளது.",
+        "label": "misleading",
+        "source": "AYUSH அமைச்சகம்",
+        "published_at": "2023-02-14",
+        "url": "https://example.org/siddha-diabetes-misleading-ta",
+        "snippet": "சித்தா ஆதரவாக இருக்கலாம், ஆனால் 'முழு குணம்' என்பது நிரூபிக்கப்படவில்லை; மருத்துவரை கலந்தாலோசிக்க வேண்டும்.",
+        "family_tree": [],
+    },
+
+    # ─────────────────────────────────────────────
+    # ENGLISH – FINAL BATCH
+    # ─────────────────────────────────────────────
+    {
+        "id": "claim-065",
+        "title": "Fake NEFT/RTGS Downtime Alert",
+        "text": "NEFT and RTGS will be down for 72 hours starting tonight for maintenance. Withdraw your money from bank before 8 PM today.",
+        "label": "fake",
+        "source": "RBI official website",
+        "published_at": "2024-05-05",
+        "url": "https://example.org/neft-downtime-fake",
+        "snippet": "RBI confirmed no such downtime planned; this causes unnecessary panic withdrawals.",
+        "family_tree": [
+            {"id": "ft-2022-mm", "title": "Bank server down panic 2022", "label": "fake", "year": 2022, "variation_note": "SBI specific version", "similarity": 0.85},
+        ],
+    },
+    {
+        "id": "claim-066",
+        "title": "NASA Confirms Dark Side of Moon Has Oxygen – Real",
+        "text": "NASA's Lunar Reconnaissance Orbiter data confirms the presence of oxygen atoms in the lunar regolith on the far side of the Moon, relevant to future habitat plans.",
+        "label": "real",
+        "source": "NASA Lunar Reconnaissance Orbiter mission data",
+        "published_at": "2024-10-22",
+        "url": "https://example.org/nasa-moon-oxygen-real",
+        "snippet": "Confirmed through peer-reviewed analysis of NASA mission data.",
+        "family_tree": [],
+    },
+    {
+        "id": "claim-067",
+        "title": "Drinking Coconut Water Reverses Kidney Stones Fully",
+        "text": "Doctors confirm that drinking 2 glasses of coconut water daily for 30 days completely dissolves and passes all types of kidney stones.",
+        "label": "misleading",
+        "source": "Urology Society of India",
+        "published_at": "2022-09-10",
+        "url": "https://example.org/coconut-kidney-misleading",
+        "snippet": "Coconut water may help small calcium stones but is not a universal treatment.",
+        "family_tree": [],
+    },
+    {
+        "id": "claim-068",
+        "title": "Aadhaar Linking Deadline Extended – Real",
+        "text": "The UIDAI has extended the deadline for linking Aadhaar with mobile numbers to March 31, 2026, giving subscribers more time to comply.",
+        "label": "real",
+        "source": "UIDAI official notification",
+        "published_at": "2025-01-10",
+        "url": "https://example.org/aadhaar-deadline-real",
+        "snippet": "Verified UIDAI press notification with gazette reference number.",
+        "family_tree": [],
+    },
+    {
+        "id": "claim-069",
+        "title": "Onion Prices to Hit ₹500/kg – Rumour",
+        "text": "Sources close to the government reveal that onion prices will hit ₹500 per kg in February 2025 due to export ban removal. Stock up now!",
+        "label": "fake",
+        "source": "Ministry of Agriculture clarification",
+        "published_at": "2025-01-18",
+        "url": "https://example.org/onion-price-rumour",
+        "snippet": "No such official communication; buffer stock release planned instead.",
+        "family_tree": [
+            {"id": "ft-2019-nn", "title": "Onion crisis 2019 panic buying", "label": "misleading", "year": 2019, "variation_note": "Real crisis context misused", "similarity": 0.78},
+        ],
+    },
+    {
+        "id": "claim-070",
+        "title": "Fake AIIMS Job Recruitment Portal",
+        "text": "AIIMS Delhi is hiring 2,000 nursing and technical staff. Apply at this unofficial portal by paying ₹1,000 registration fee.",
+        "label": "scam",
+        "source": "AIIMS Delhi official notice",
+        "published_at": "2024-08-25",
+        "url": "https://example.org/aiims-fake-job",
+        "snippet": "AIIMS recruitment only at aiimsexams.ac.in; any fee-charging site is fraudulent.",
+        "family_tree": [
+            {"id": "ft-2023-oo", "title": "AIIMS job scam 2023", "label": "scam", "year": 2023, "variation_note": "Telegram channel version", "similarity": 0.88},
+        ],
+    },
 ]
 
-
+# ─────────────────────────────────────────────
+# Quick stats print & Execution
+# ─────────────────────────────────────────────
 if __name__ == "__main__":
+    from collections import Counter
+
+    labels = Counter(r["label"] for r in SEED_RECORDS)
+    
+    # Robust Language Detection
+    hindi_recs = [r for r in SEED_RECORDS if any(c in r["text"] for c in "अआइईउऊएऐओऔकखगघचछजझटठडढणतथदधनपफबभमयरलवशषसहािीुूृेैोौंःँ")]
+    tamil_recs = [r for r in SEED_RECORDS if "ா" in r["text"] or "ி" in r["text"] or "ல்" in r["text"]]
+    
+    # Use exact word matching (.split()) for Hinglish to avoid substring false positives
+    hinglish_words = {"bhai", "yaar", "karo", "hai", "nahi", "paise", "abhi", "dekho", "matlab", "wala", "aur", "par", "ka", "ki", "ke"}
+    hinglish_recs = [r for r in SEED_RECORDS if r not in hindi_recs and r not in tamil_recs and any(w in r["text"].lower().split() for w in hinglish_words)]
+    
+    # Everything else defaults to English
+    english_recs = [r for r in SEED_RECORDS if r not in hindi_recs and r not in tamil_recs and r not in hinglish_recs]
+
+    langs = {
+        "english": english_recs,
+        "hindi": hindi_recs,
+        "tamil": tamil_recs,
+        "hinglish": hinglish_recs,
+    }
+
+    print(f"Total records : {len(SEED_RECORDS)}")
+    print(f"Label counts  : {dict(labels)}")
+    for lang, recs in langs.items():
+        print(f"~{lang.capitalize():10}: {len(recs)} records")
+
+    print("\nStarting Qdrant Upsert...")
     upsert_claims(SEED_RECORDS)
-    print("Seeded SachAI demo claims into Qdrant.")
+    print("✅ Successfully seeded 70 SachAI demo claims into Qdrant.")

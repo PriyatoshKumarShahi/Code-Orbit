@@ -20,19 +20,26 @@ async def google_custom_search(query: str) -> dict:
         "q": query,
         "num": 5,
     }
-    async with httpx.AsyncClient(timeout=20) as client:
-        response = await client.get("https://www.googleapis.com/customsearch/v1", params=params)
-        response.raise_for_status()
-        data = response.json()
+    try:
+        async with httpx.AsyncClient(timeout=20) as client:
+            response = await client.get("https://www.googleapis.com/customsearch/v1", params=params)
+            response.raise_for_status()
+            data = response.json()
 
-    items = [
-        {
-            "title": item.get("title"),
-            "link": item.get("link"),
-            "snippet": item.get("snippet"),
+        items = [
+            {
+                "title": item.get("title"),
+                "link": item.get("link"),
+                "snippet": item.get("snippet"),
+            }
+            for item in data.get("items", [])
+        ]
+    except Exception as e:
+        return {
+            "used": False,
+            "summary": f"Live search failed: {str(e)}",
+            "items": [],
         }
-        for item in data.get("items", [])
-    ]
 
     if not items:
         return {

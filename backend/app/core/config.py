@@ -9,7 +9,13 @@ class Settings(BaseSettings):
     app_name: str = "SachAI"
     app_env: str = "development"
     api_v1_prefix: str = "/api/v1"
-    backend_cors_origins: List[str] | str = ["http://localhost:5173"]
+    backend_cors_origins: List[str] | str = [
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "http://localhost:8000",
+        "http://127.0.0.1:8000",
+    ]
+    backend_cors_allow_origin_regex: str | None = r"chrome-extension://.*"
 
     qdrant_url: str = "http://localhost:6333"
     qdrant_api_key: str | None = None
@@ -21,8 +27,8 @@ class Settings(BaseSettings):
     google_search_api_key: str | None = None
     google_search_engine_id: str | None = None
 
-    similarity_threshold: float = 0.8
-    low_confidence_threshold: float = 0.7
+    similarity_threshold: float = 0.65
+    low_confidence_threshold: float = 0.6
     top_k: int = 5
 
     model_config = SettingsConfigDict(

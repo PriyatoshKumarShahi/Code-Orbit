@@ -11,7 +11,7 @@ from app.services.embedding_service import embedding_size, embed_text
 @lru_cache(maxsize=1)
 def get_qdrant_client() -> QdrantClient:
     settings = get_settings()
-    return QdrantClient(url=settings.qdrant_url, api_key=settings.qdrant_api_key)
+    return QdrantClient(url=settings.qdrant_url, api_key=settings.qdrant_api_key, timeout=60.0)
 
 
 def ensure_collection() -> None:
@@ -30,6 +30,7 @@ def ensure_collection() -> None:
 
 
 def upsert_claims(records: Iterable[dict]) -> None:
+    import uuid
     settings = get_settings()
     client = get_qdrant_client()
     ensure_collection()
@@ -39,8 +40,22 @@ def upsert_claims(records: Iterable[dict]) -> None:
         vector = embed_text(text)
         payload = dict(record)
         payload["vector_model"] = "intfloat/multilingual-e5-large"
-        points.append(models.PointStruct(id=record["id"], vector=vector, payload=payload))
-    client.upsert(collection_name=settings.qdrant_collection, points=points)
+        
+        point_id = record["id"]
+        if isinstance(point_id, str):
+            try:
+                uuid.UUID(point_id)
+            except ValueError:
+                point_id = str(uuid.uuid5(uuid.NAMESPACE_OID, point_id))
+                
+        points.append(models.PointStruct(id=point_id, vector=vector, payload=payload))
+        
+    # Upsert in chunks to avoid timeout
+    chunk_size = 10
+    for i in range(0, len(points), chunk_size):
+        chunk = points[i:i + chunk_size]
+        client.upsert(collection_name=settings.qdrant_collection, points=chunk)
+        print(f"Upserted chunk {i//chunk_size + 1}")
 
 
 def search_claims(query: str, limit: int = 5):

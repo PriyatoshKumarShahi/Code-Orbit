@@ -35,6 +35,7 @@ async def verify_content(text: str, explain_tone: str = "simple", image_extracte
     best_label = "unverified"
     best_payload: dict[str, Any] = {}
 
+    points = [p for p in points if float(p.score or 0.0) >= settings.similarity_threshold]
     for idx, point in enumerate(points):
         payload = point.payload or {}
         score = float(point.score or 0.0)
@@ -147,5 +148,8 @@ async def verify_content(text: str, explain_tone: str = "simple", image_extracte
         normalized_input=normalized,
         extracted_text_from_image=image_extracted_text,
         raw_llm_summary=summary["explanation"],
+        consequences=summary.get("consequences"),
+        social_impact=summary.get("social_impact"),
+        community_flags=len(matches) * 12 + 3, # Mock value for Chain of Trust
         debug={"heuristics": hz, "best_label": best_label, "top_k": len(matches)},
     )

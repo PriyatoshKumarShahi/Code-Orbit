@@ -59,4 +59,7 @@ class VerifyResponse(BaseModel):
     normalized_input: str
     extracted_text_from_image: str | None = None
     raw_llm_summary: str | None = None
+    consequences: str | None = None
+    social_impact: str | None = None
+    community_flags: int = 0
     debug: dict[str, Any] | None = None
