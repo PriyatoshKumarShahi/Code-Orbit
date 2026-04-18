@@ -10,7 +10,7 @@ class Settings(BaseSettings):
     app_env: str = "development"
     api_v1_prefix: str = "/api/v1"
     backend_cors_origins: List[str] | str = [
-        "https://code-orbit-2oly.onrender.com",
+      
         "http://localhost:5173",
         "http://127.0.0.1:5173",
         "http://localhost:8000",
